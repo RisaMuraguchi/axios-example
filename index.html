@@ -13,9 +13,13 @@
 
   <script>
     /* global $ */
+    /* global axios */
     $(function() {
       $('button').on('click', function() {
-        console.log('ボタンがクリックされました');
+        axios.get('https://qiita.com/api/v2/items')
+        .then(function(res) {
+          console.log(res.data);
+        });
       });
     });
   </script>
