@@ -18,7 +18,12 @@
       $('button').on('click', function() {
         axios.get('https://qiita.com/api/v2/items')
         .then(function(res) {
-          console.log(res.data);
+          const ul = $('<ul>');
+          for (const obj of res.data) {
+            const li = $('<li>').html(`${obj.title} <a href="${obj.url}">${obj.url}</a>`);
+            ul.append(li);
+          }
+          $(".response-render-area").html(ul);
         });
       });
     });
